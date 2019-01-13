@@ -1,4 +1,4 @@
-#!C:\Users\73508\Documents\ECE595\venv\Scripts\python.exe
+#!D:\Codes\Python\ECE595\venv\Scripts\python.exe
 # EASY-INSTALL-ENTRY-SCRIPT: 'pip==10.0.1','console_scripts','pip3.7'
 __requires__ = 'pip==10.0.1'
 import re
