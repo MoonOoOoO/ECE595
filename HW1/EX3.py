@@ -1,11 +1,12 @@
-import math
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.stats import multivariate_normal
 
-x1 = np.arange(-50, 50, 0.1)
-x2 = np.arange(10, 100, 0.1)
-X1, X2 = np.meshgrid(x1, x2)
-z = np.exp((-1 * X1 ** 2 - 2 * X1 + X1 * X2 + X2 ** 2 - 28 + 10 * X2) / 3) / (2 * np.sqrt(3))
-
-plt.contour(x1, x2, z)
+x, y = np.mgrid[-1:5:.01, 0:10:.01]
+pos = np.empty(x.shape + (2,))
+pos[:, :, 0] = x
+pos[:, :, 1] = y
+z = multivariate_normal([2., 6.], [[2., 1.], [1., 2.]])
+plt.contour(x, y, z.pdf(pos))
+plt.savefig("6.png", transparent=True, dpi=500, pad_inches=0)
 plt.show()

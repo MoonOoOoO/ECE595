@@ -51,5 +51,5 @@ for m in range(1, 201):
 print(label)
 p = plt.hist(x, label, density=True)
 plt.plot(p[1], norm.pdf(p[1]), "r")
-plt.savefig("HW1/5.png", transparent=True, dpi=500, pad_inches=0)
+plt.savefig("5.png", transparent=True, dpi=500, pad_inches=0)
 plt.show()
