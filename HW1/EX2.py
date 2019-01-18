@@ -12,7 +12,6 @@ from scipy.stats import norm
 # sigma = 1
 # x = np.linspace(-3, 3, 100)
 # y = np.exp(-(x - mu) ** 2 / 2 * sigma ** 2) / sigma * np.sqrt(2 * math.pi)
-# plt.figure(1)
 # plt.plot(x, y, "r-", linewidth=2)
 # plt.savefig("3.png", transparent=True, dpi=500, pad_inches=0)
 # plt.show()
