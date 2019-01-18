@@ -34,6 +34,7 @@ x.sort()
 d = x.max() - x.min()
 j_h = 0
 label = 0
+j_ha = np.zeros(200)
 for m in range(1, 201):
     hist, bins = np.histogram(x, m)
     h = d / m
@@ -46,9 +47,12 @@ for m in range(1, 201):
     elif temp < j_h:
         label = m
         j_h = temp
+    j_ha[m - 1] = j_h
 
 print(label)
-p = plt.hist(x, label, density=True)
-plt.plot(p[1], norm.pdf(p[1]), "r")
-plt.savefig("5.png", transparent=True, dpi=500, pad_inches=0)
+step = np.linspace(1, 200, 200)
+plt.plot(step, j_ha)
+# p = plt.hist(x, label, density=True)
+# plt.plot(p[1], norm.pdf(p[1]), "r")
+plt.savefig("jha.png", transparent=True, dpi=500, pad_inches=0)
 plt.show()
