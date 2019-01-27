@@ -11,7 +11,7 @@ from scipy.stats import multivariate_normal
 # plt.contour(x, y, z1.pdf(pos))
 # z2 = np.random.multivariate_normal([2, 6], [[2, 1], [1, 1]], 5000)
 # plt.scatter(z2[:, 0], z2[:, 1], marker='+', c='r')
-# plt.savefig("4.png", transparent=True, dpi=500, pad_inches=0)
+# plt.savefig("screenshot/4.png", transparent=True, dpi=500, pad_inches=0)
 # plt.show()
 
 x, y = np.random.multivariate_normal([0, 0], [[2, 1], [1, 2]], 5000).T
@@ -27,5 +27,5 @@ for i in range(0, 5000):
     y_t[i] = trans[1]
 
 plt.scatter(x_t, y_t, marker='+', c='r', alpha=0.5)
-plt.savefig("5.png", transparent=True, dpi=500, pad_inches=0)
+plt.savefig("screenshot/5.png", transparent=True, dpi=500, pad_inches=0)
 plt.show()

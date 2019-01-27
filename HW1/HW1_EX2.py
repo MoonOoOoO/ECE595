@@ -13,7 +13,7 @@ from scipy.stats import norm
 # x = np.linspace(-3, 3, 100)
 # y = np.exp(-(x - mu) ** 2 / 2 * sigma ** 2) / sigma * np.sqrt(2 * math.pi)
 # plt.plot(x, y, "r-", linewidth=2)
-# plt.savefig("1.png", transparent=True, dpi=500, pad_inches=0)
+# plt.savefig("screenshot/1.png", transparent=True, dpi=500, pad_inches=0)
 # plt.show()
 
 # x = np.random.normal(0, 1, 1000)
@@ -26,7 +26,7 @@ from scipy.stats import norm
 # plt.subplot(212)
 # b = plt.hist(x, 1000, density=True)
 # plt.plot(b[1], norm.pdf(b[1]), "r")
-# plt.savefig("2.png", transparent=True, dpi=500, pad_inches=0)
+# plt.savefig("screenshot/2.png", transparent=True, dpi=500, pad_inches=0)
 # plt.show()
 
 x = np.random.normal(0, 1, 1000)
@@ -52,9 +52,9 @@ for m in range(1, 201):
 print(label)
 # p = plt.hist(x, label, density=True)
 # plt.plot(p[1], norm.pdf(p[1]), "r")
-# plt.savefig("3.png", transparent=True, dpi=500, pad_inches=0)
+# plt.savefig("screenshot/3.png", transparent=True, dpi=500, pad_inches=0)
 
 step = np.linspace(1, 200, 200)
 plt.plot(step, j_ha)
-plt.savefig("jha.png", transparent=True, dpi=500, pad_inches=0)
+plt.savefig("screenshot/jha.png", transparent=True, dpi=500, pad_inches=0)
 plt.show()
