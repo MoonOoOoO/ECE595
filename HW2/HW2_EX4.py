@@ -88,7 +88,7 @@ def a_i_ii():
 def c_i():
     alpha_start = cp.sum_squares(theta_0_1()).value
     alpha_list = np.arange(alpha_start - 100, alpha_start + 102, 2)
-    theta_alpha = []
+    theta_alpha, rates_alpha = [], []
     i = 0
     for alpha in alpha_list:
         i += 1
@@ -102,6 +102,7 @@ def c_i():
             prob = cp.Problem(objective, constraint)
             prob.solve(solver=cp.SCS)
         theta_alpha.append(x.value)
+        rates_alpha.append(success_rate(x.value, divide=True))
 
     first_part_alpha, last_part_alpha = [], []
     alpha_x = []
@@ -110,22 +111,29 @@ def c_i():
         last_part_alpha.append(cp.sum_squares(theta_alpha[i]).value)
         alpha_x.append(alpha_list[i])
 
-    plt.figure(figsize=(6, 8))
-    plt.subplot(311)
+    plt.figure(1)
+    plt.xlabel(r'$\alpha$')
+    plt.ylabel('success rate')
+    plt.plot(alpha_list, rates_alpha)
+    plt.tight_layout()
+    plt.savefig("screenshot/7.png", transparent=True, dpi=500, pad_inches=0)
+    plt.figure(2, figsize=(6, 2.7))
+    # plt.figure(figsize=(6, 8))
+    # plt.subplot(311)
     plt.title(r'$||\theta_\alpha||_2^2\ and \ ||A\theta_\alpha - b||_2^2$')
     plt.xlabel(r'$||\theta_\alpha||_2^2$')
     plt.ylabel(r'$||A\theta_\alpha - b||_2^2$')
     plt.plot(last_part_alpha, first_part_alpha, c='r')
-    plt.subplot(312)
-    plt.title(r'$\alpha\ and \ ||\theta_\alpha||_2^2$')
-    plt.xlabel(r'$\alpha$')
-    plt.ylabel(r'$||\theta_\alpha||_2^2$')
-    plt.plot(alpha_x, last_part_alpha, c='g')
-    plt.subplot(313)
-    plt.title(r'$\alpha\ and \ ||A\theta_\alpha - b||_2^2$')
-    plt.xlabel(r'$\alpha$')
-    plt.ylabel(r'$||A\theta_\alpha - b||_2^2$')
-    plt.plot(alpha_x, first_part_alpha, c='b')
+    # plt.subplot(312)
+    # plt.title(r'$\alpha\ and \ ||\theta_\alpha||_2^2$')
+    # plt.xlabel(r'$\alpha$')
+    # plt.ylabel(r'$||\theta_\alpha||_2^2$')
+    # plt.plot(alpha_x, last_part_alpha, c='g')
+    # plt.subplot(313)
+    # plt.title(r'$\alpha\ and \ ||A\theta_\alpha - b||_2^2$')
+    # plt.xlabel(r'$\alpha$')
+    # plt.ylabel(r'$||A\theta_\alpha - b||_2^2$')
+    # plt.plot(alpha_x, first_part_alpha, c='b')
     plt.tight_layout()
     plt.savefig("screenshot/5.png", transparent=True, dpi=500, pad_inches=0)
     plt.show()
@@ -133,12 +141,12 @@ def c_i():
 
 def c_ii():
     epsilon_start = cp.sum_squares(np.matmul(A, theta_0_1()) - np.reshape(b, b.size)).value
-    epsilon_list = np.arange(epsilon_start, epsilon_start + 102, 2)
-    theta_epsilon = []
+    epsilon_list = np.arange(epsilon_start, epsilon_start + 202, 2)
+    theta_epsilon, rates_epsilon = [], []
     i = 0
     for epsilon in epsilon_list:
         i += 1
-        print(str(i) + "/51")
+        print(str(i) + "/101")
         x = cp.Variable(A[0, :].size)
         expression = (cp.sum_squares(x))
         constraint = [cp.sum_squares(A * x - np.reshape(b, b.size)) <= epsilon]
@@ -148,6 +156,7 @@ def c_ii():
             prob = cp.Problem(objective, constraint)
             prob.solve(solver=cp.SCS)
         theta_epsilon.append(x.value)
+        rates_epsilon.append(success_rate(x.value, divide=True))
 
     first_part_epsilon, last_part_epsilon = [], []
     epsilon_x = []
@@ -156,22 +165,29 @@ def c_ii():
         last_part_epsilon.append(cp.sum_squares(np.matmul(A, theta_epsilon[i]) - np.reshape(b, b.size)).value)
         epsilon_x.append(epsilon_list[i])
 
-    plt.figure(figsize=(6, 8))
-    plt.subplot(311)
+    plt.figure(1)
+    plt.xlabel(r'$\epsilon$')
+    plt.ylabel('success rate')
+    plt.plot(epsilon_list, rates_epsilon)
+    plt.tight_layout()
+    plt.savefig("screenshot/8.png", transparent=True, dpi=500, pad_inches=0)
+    plt.figure(figsize=(6, 2.7))
+    # plt.figure(figsize=(6, 8))
+    # plt.subplot(311)
     plt.title(r'$||A\theta_\epsilon - b||_2^2\ and \ ||\theta_\epsilon||_2^2$')
     plt.xlabel(r'$||A\theta_\epsilon - b||_2^2$')
     plt.ylabel(r'$||\theta_\epsilon||_2^2$')
     plt.plot(last_part_epsilon, first_part_epsilon, c='r')
-    plt.subplot(312)
-    plt.title(r'$\epsilon\ and \ ||\theta_\epsilon||_2^2$')
-    plt.xlabel(r'$\epsilon$')
-    plt.ylabel(r'$||\theta_\epsilon||_2^2$')
-    plt.plot(epsilon_x, last_part_epsilon, c='g')
-    plt.subplot(313)
-    plt.title(r'$\epsilon\ and \ ||A\theta_\epsilon - b||_2^2$')
-    plt.xlabel(r'$\epsilon$')
-    plt.ylabel(r'$||A\theta_\epsilon - b||_2^2$')
-    plt.plot(epsilon_x, first_part_epsilon, c='b')
+    # plt.subplot(312)
+    # plt.title(r'$\epsilon\ and \ ||\theta_\epsilon||_2^2$')
+    # plt.xlabel(r'$\epsilon$')
+    # plt.ylabel(r'$||\theta_\epsilon||_2^2$')
+    # plt.plot(epsilon_x, last_part_epsilon, c='g')
+    # plt.subplot(313)
+    # plt.title(r'$\epsilon\ and \ ||A\theta_\epsilon - b||_2^2$')
+    # plt.xlabel(r'$\epsilon$')
+    # plt.ylabel(r'$||A\theta_\epsilon - b||_2^2$')
+    # plt.plot(epsilon_x, first_part_epsilon, c='b')
     plt.tight_layout()
     plt.savefig("screenshot/6.png", transparent=True, dpi=500, pad_inches=0)
     plt.show()
@@ -179,5 +195,5 @@ def c_ii():
 
 if __name__ == '__main__':
     # a_i_ii()
-    c_i()
-    # c_ii()
+    # c_i()
+    c_ii()
