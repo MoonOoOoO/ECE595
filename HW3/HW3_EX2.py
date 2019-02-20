@@ -38,20 +38,47 @@ def decision_func(x):
     return label
 
 
+def cal_loss(output):
+    loss = 0
+    truth = plt.imread('data/truth.png') / 255
+    x, y = truth.shape
+    count = 0
+    for k in range(x - 8):
+        for l in range(y - 8):
+            loss += np.abs(output[k, l] - truth[k, l])
+            count += 1
+    return loss / count
+
+
 if __name__ == '__main__':
-    img = plt.imread('data/cat_grass.jpg') / 255
-    m, n = img.shape
-    output = np.zeros((m - 8, n - 8))
+    img = plt.imread('data/cheetah_on_grass.jpg') / 255
+    m, n, c = img.shape
+    img = (img[:, :, 0] + img[:, :, 1] + img[:, :, 2]) / c
+    output_overlap = np.zeros((m - 8, n - 8))
+    output_non_overlap = np.zeros((m - 8, n - 8))
     process = 0
     for i in range(m - 8):
         for j in range(n - 8):
-            patch = img[i:i + 8, j:j + 8]
-            patch = np.reshape(patch, (64, 1))
-            output[i, j] = decision_func(patch)
+            # non-overlap
+            if (i % 8 == 0) and (j % 8 == 0):
+                patch_non_overlap = img[i:i + 8, j:j + 8]
+                patch_non_overlap = np.reshape(patch_non_overlap, (64, 1))
+                output_non_overlap[i:i + 8, j:j + 8] = decision_func(patch_non_overlap)
+            patch_overlap = img[i:i + 8, j:j + 8]
+            patch_overlap = np.reshape(patch_overlap, (64, 1))
+            output_overlap[i, j] = decision_func(patch_overlap)
             print(process / ((m - 8) * (n - 8)))
             process += 1
-    plt.imshow(output * 255, cmap='gray')
-    # plt.axis('off')
-    # plt.imshow(Y, cmap='gray')
-    plt.savefig("screenshot/1.png", transparent=True, dpi=500, pad_inches=0)
+    # loss_overlap = cal_loss(output_overlap)
+    # loss_non_overlap = cal_loss(output_non_overlap)
+    plt.figure()
+    plt.axis('off')
+    # plt.title('Loss: ' + str(loss_overlap))
+    plt.imshow(output_overlap * 255, cmap='gray')
+    plt.savefig("screenshot/5.png", transparent=True, dpi=500, pad_inches=0)
+    plt.figure()
+    plt.axis('off')
+    # plt.title('Loss: ' + str(loss_non_overlap))
+    plt.imshow(output_non_overlap * 255, cmap='gray')
+    plt.savefig("screenshot/6.png", transparent=True, dpi=500, pad_inches=0)
     plt.show()
