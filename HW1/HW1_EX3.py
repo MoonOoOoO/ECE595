@@ -27,5 +27,5 @@ for i in range(0, 5000):
     y_t[i] = trans[1]
 
 plt.scatter(x_t, y_t, marker='+', c='r', alpha=0.5)
-plt.savefig("screenshot/5.png", transparent=True, dpi=500, pad_inches=0)
+# plt.savefig("screenshot/5.png", transparent=True, dpi=500, pad_inches=0)
 plt.show()

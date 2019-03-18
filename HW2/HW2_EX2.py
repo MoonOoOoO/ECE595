@@ -19,7 +19,8 @@ female_set_temp[:, 2] = -1 * female_set_temp[:, 2]
 # construct matrix A and b
 A = np.concatenate((male_set, female_set_temp), axis=0)
 b = np.concatenate((male_label, female_label), axis=0)
-
+print(A)
+print(b)
 # compute theta using numpy
 temp = np.linalg.inv(np.matmul(A.T, A))
 theta_np = np.matmul(np.matmul(temp, A.T), b)
