@@ -50,6 +50,7 @@ def cal_loss(output):
     return loss / count
 
 
+# main function
 if __name__ == '__main__':
     img = plt.imread('data/cat_grass.jpg') / 255
     # m, n, c = img.shape
