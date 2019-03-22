@@ -1,0 +1,3 @@
+- hw04_sample_vectors: 1000 sample vectors for EACH class, 2000 samples vectors in total. The two classes are linearly separable.
+- hw04_labels: 1000 labels for EACH class, 2000 labels in totals.
+- Caution: the labels for the two classes are 0 and 1 instead of +1 and -1.
