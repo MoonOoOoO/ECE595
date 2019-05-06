@@ -30,6 +30,7 @@ def discriminant_grass(x):
     return score.item(0)
 
 
+# return 1 if it's cat, 0 if it's grass
 def decision_func(x):
     if discriminant_cat(x) > discriminant_grass(x):
         label = 1
