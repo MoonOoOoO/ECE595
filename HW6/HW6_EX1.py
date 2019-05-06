@@ -38,6 +38,7 @@ plt.subplot(313)
 plt.title("minimum coin")
 plt.hist(min_coin, range=(0, 1), color='c')
 plt.tight_layout()
+plt.savefig("screenshot/1.png", transparent=True, dpi=500, pad_inches=0)
 
 P_first_coin = []
 P_rand_coin = []
@@ -71,4 +72,5 @@ plt.plot(epsilon_list, hoeffding, 'o', epsilon_list, hoeffding)
 plt.xticks(epsilon_list)
 
 plt.tight_layout()
+plt.savefig("screenshot/2.png", transparent=True, dpi=500, pad_inches=0)
 plt.show()
