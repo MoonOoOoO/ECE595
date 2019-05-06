@@ -67,6 +67,7 @@ if __name__ == '__main__':
                 patch_non_overlap = img[i:i + 8, j:j + 8]
                 patch_non_overlap = np.reshape(patch_non_overlap, (64, 1))
                 output_non_overlap[i:i + 8, j:j + 8] = decision_func(patch_non_overlap)
+            # overlap
             patch_overlap = img[i:i + 8, j:j + 8]
             patch_overlap = np.reshape(patch_overlap, (64, 1))
             output_overlap[i, j] = decision_func(patch_overlap)
