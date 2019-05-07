@@ -38,7 +38,7 @@ plt.subplot(313)
 plt.title("minimum coin")
 plt.hist(min_coin, range=(0, 1), color='c')
 plt.tight_layout()
-plt.savefig("screenshot/1.png", transparent=True, dpi=500, pad_inches=0)
+plt.savefig("screenshot/1.png", transparent=True, pad_inches=0)
 
 P_first_coin = []
 P_rand_coin = []
@@ -49,7 +49,6 @@ for eps in epsilon_list:
     P_rand_coin.append(calculate_p(rand_coin, eps))
     P_min_coin.append(calculate_p(min_coin, eps))
     hoeffding.append(2 * np.exp(-2 * eps ** 2 * N))
-
 plt.figure(figsize=(5, 8))
 plt.subplot(411)
 plt.title('$P(|v_1-\mu|>\epsilon)$')
@@ -72,5 +71,5 @@ plt.plot(epsilon_list, hoeffding, 'o', epsilon_list, hoeffding)
 plt.xticks(epsilon_list)
 
 plt.tight_layout()
-plt.savefig("screenshot/2.png", transparent=True, dpi=500, pad_inches=0)
+plt.savefig("screenshot/2.png", transparent=True, pad_inches=0)
 plt.show()

@@ -36,5 +36,5 @@ if __name__ == '__main__':
     x1 = np.linspace(10, 80, 100)
     x2 = (-theta_np[2] - theta_np[0] * x1) / theta_np[1]
     plt.plot(x1, x2)
-    plt.savefig("screenshot/1.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/1.png", transparent=True, pad_inches=0)
     plt.show()

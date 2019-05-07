@@ -18,6 +18,7 @@ plt.scatter(y_1, y_2, marker='.', c='c', alpha=0.5)
 # use formula in (a)
 beta = np.matmul(np.linalg.inv(cov), np.subtract(mu_2, mu_1))
 beta_0 = - np.matmul(np.matmul(np.add(mu_1, mu_2).T, np.linalg.inv(cov)), np.subtract(mu_2, mu_1)) / 2
+# plot the result
 m = np.linspace(-5, 15, 100)
 n = -beta[1] * m / beta[0] - beta_0 / beta[0]
 plt.plot(m, n, color='r', alpha=0.5)
@@ -35,11 +36,12 @@ with warnings.catch_warnings():
     prob.solve()
 theta_cp = theta_cp.value
 print(theta_cp)
+
+# plot the result
 m_LLS = np.linspace(-5, 15, 100)
 n_LLS = (-theta_cp[2] - theta_cp[0] * m_LLS) / theta_cp[1]
-plt.text(11, 2, 'Blue plane: LLS')
-plt.text(11, 1, 'Red plane: Gaussian')
 plt.plot(m_LLS, n_LLS, color='b', alpha=0.5)
+plt.legend(['LLS', 'Gaussian'])
 plt.tight_layout()
-plt.savefig("screenshot/7.png", transparent=True, dpi=500, pad_inches=0)
+plt.savefig("screenshot/7.png", transparent=True, pad_inches=0)
 plt.show()

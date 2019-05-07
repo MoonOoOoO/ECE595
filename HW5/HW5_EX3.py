@@ -54,51 +54,51 @@ if __name__ == '__main__':
     plt.figure()
     plt.imshow(cw_img_0_5 * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/0_5_overlap.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/0_5_overlap.png", transparent=True, pad_inches=0)
 
     plt.figure()
     plt.imshow((cw_img_0_5 - img) * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/0_5_overlap_perturbation.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/0_5_overlap_perturbation.png", transparent=True, pad_inches=0)
 
     plt.figure()
     plt.imshow(cw_img_1 * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/1_overlap.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/1_overlap.png", transparent=True, pad_inches=0)
 
     plt.figure()
     plt.imshow((cw_img_1 - img) * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/1_overlap_perturbation.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/1_overlap_perturbation.png", transparent=True, pad_inches=0)
 
     plt.figure()
     plt.imshow(cw_img_5 * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/5_overlap.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/5_overlap.png", transparent=True, pad_inches=0)
 
     plt.figure()
     plt.imshow((cw_img_5 - img) * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/5_overlap_perturbation.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/5_overlap_perturbation.png", transparent=True, pad_inches=0)
 
     plt.figure()
     c1_x = np.arange(1, len(changes_0_5) + 1, 5)
     c1_y = changes_0_5[1:len(changes_0_5) + 1:5]
     plt.plot(c1_x, c1_y, 'o', c1_x, c1_y)
     plt.tight_layout()
-    plt.savefig("screenshot/1_overlap_plot.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/1_overlap_plot.png", transparent=True, pad_inches=0)
 
     plt.figure()
     c5_x = np.arange(1, len(changes_1) + 1, 5)
     c5_y = changes_1[1:len(changes_1) + 1:5]
     plt.plot(c5_x, c5_y, 'o', c5_x, c5_y)
     plt.tight_layout()
-    plt.savefig("screenshot/5_overlap_plot.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/5_overlap_plot.png", transparent=True, pad_inches=0)
 
     plt.figure()
     c10_x = np.arange(1, len(changes_5) + 1, 2)
     c10_y = changes_5[1:len(changes_5) + 1:2]
     plt.plot(c10_x, c10_y, 'o', c10_x, c10_y)
     plt.tight_layout()
-    plt.savefig("screenshot/10_overlap_plot.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/10_overlap_plot.png", transparent=True, pad_inches=0)
     plt.show()

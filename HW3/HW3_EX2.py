@@ -53,10 +53,11 @@ def cal_loss(output):
 
 # main function
 if __name__ == '__main__':
-    img = plt.imread('data/cat_grass.jpg') / 255
-    # m, n, c = img.shape
-    # img = (img[:, :, 0] + img[:, :, 1] + img[:, :, 2]) / c
-    m, n = img.shape
+    # img = plt.imread('data/cat_grass.jpg') / 255
+    # m, n = img.shape
+    img = plt.imread('data/cat_on_grass.jpg') / 255
+    m, n, c = img.shape
+    img = (img[:, :, 0] + img[:, :, 1] + img[:, :, 2]) / c
     output_overlap = np.zeros((m - 8, n - 8))
     output_non_overlap = np.zeros((m - 8, n - 8))
     process = 0
@@ -73,18 +74,24 @@ if __name__ == '__main__':
             output_overlap[i, j] = decision_func(patch_overlap)
             print(process / ((m - 8) * (n - 8)))
             process += 1
-    loss_overlap = cal_loss(output_overlap)
-    loss_non_overlap = cal_loss(output_non_overlap)
+
+    # display overlap mode
     plt.figure()
     plt.axis('off')
-    plt.title('Loss: ' + str(loss_overlap))
+    # loss_overlap = cal_loss(output_overlap)
+    # plt.title('Loss: ' + str(loss_overlap))
+    plt.title('cheetah on grass, overlap')
     plt.imshow(output_overlap * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/1.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/5.png", transparent=True, pad_inches=0)
+
+    # display non-overlap mode
     plt.figure()
     plt.axis('off')
-    plt.title('Loss: ' + str(loss_non_overlap))
+    # loss_non_overlap = cal_loss(output_non_overlap)
+    # plt.title('Loss: ' + str(loss_non_overlap))
+    plt.title('cheetah on grass, non-overlap')
     plt.imshow(output_non_overlap * 255, cmap='gray')
     plt.tight_layout()
-    plt.savefig("screenshot/2.png", transparent=True, dpi=500, pad_inches=0)
+    plt.savefig("screenshot/6.png", transparent=True, pad_inches=0)
     plt.show()
