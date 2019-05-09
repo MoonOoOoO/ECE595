@@ -4,6 +4,8 @@ from sklearn.linear_model import Perceptron
 from sklearn.svm import LinearSVC
 import matplotlib.pyplot as plt
 
+""" this is not an implementation, this is a application """
+
 
 def load_csv_data(filename):  # load data from given csv file to a numpy array
     a = []
@@ -58,7 +60,7 @@ plt.plot(x0, x1, c='black', alpha=0.5)
 plt.plot(x0, x2, c='r', alpha=0.5)
 plt.plot(x0, x3, c='g', alpha=0.5)
 plt.plot(x0, x4, c='c', alpha=0.5)
-plt.legend(['Logistic','Perceptron','Hard-SVM','Soft-SVM'])
+plt.legend(['Logistic', 'Perceptron', 'Hard-SVM', 'Soft-SVM'])
 plt.tight_layout()
 plt.savefig("screenshot/1.png", transparent=True, pad_inches=0)
 plt.show()
