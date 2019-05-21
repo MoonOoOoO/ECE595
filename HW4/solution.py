@@ -217,25 +217,25 @@ def svm_scipy(X, labels, allow_slackness=False, c=1):
 
 if __name__ == '__main__':
     sample = load_csv_data("data/hw04_sample_vectors.csv").T
-label = load_csv_data("data/hw04_labels.csv")
-print(sample)
-print(label)
-# w = logistic(sample, label)
-# q = logistic(sample, label, mode='batch')
-# w = perceptron(sample, label, max_epoch=500)
-q = perceptron(sample, label, max_epoch=5000, mode='batch')
-w = svm_cvxpy(sample, label)
-# q = svm_cvxpy(sample, label, allow_slackness=True)
-# print(w)
-print(q[0])
-plt.scatter(sample[0, :1000], sample[1, :1000], marker='.', c='c', alpha=0.5)
-plt.scatter(sample[0, 1000:], sample[1, 1000:], marker='.', c='r', alpha=0.5)
-x0 = np.linspace(-0.5, 0.5, 100)
-# x1 = w[0] * x0 + w[1]  # logistic
-# x2 = q[0] * x0 + q[1]  # logistic
-# x1 = -w[1] - w[0][0] * x0 / w[0][1]  # perceptron
-x2 = -q[1] / q[0][0] - q[0][1] * x0  # perceptron
-# plt.plot(x0, x1)
-# plt.figure()
-plt.plot(x0, x2)
-plt.show()
+    label = load_csv_data("data/hw04_labels.csv")
+    print(sample)
+    print(label)
+    # w = logistic(sample, label)
+    # q = logistic(sample, label, mode='batch')
+    # w = perceptron(sample, label, max_epoch=500)
+    q = perceptron(sample, label, max_epoch=5000, mode='batch')
+    w = svm_cvxpy(sample, label)
+    # q = svm_cvxpy(sample, label, allow_slackness=True)
+    # print(w)
+    print(q[0])
+    plt.scatter(sample[0, :1000], sample[1, :1000], marker='.', c='c', alpha=0.5)
+    plt.scatter(sample[0, 1000:], sample[1, 1000:], marker='.', c='r', alpha=0.5)
+    x0 = np.linspace(-0.5, 0.5, 100)
+    # x1 = w[0] * x0 + w[1]  # logistic
+    # x2 = q[0] * x0 + q[1]  # logistic
+    # x1 = -w[1] - w[0][0] * x0 / w[0][1]  # perceptron
+    x2 = -q[1] / q[0][0] - q[0][1] * x0  # perceptron
+    # plt.plot(x0, x1)
+    # plt.figure()
+    plt.plot(x0, x2)
+    plt.show()
